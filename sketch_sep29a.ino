@@ -10,7 +10,6 @@ int line_black[10] = {200, 200, 200, 200, 200, 200, 200, 200, 200, 200};
 int line_val[10] = {0};
 
 void setup() {
-   // put your setup code here, to run once:
   attachInterrupt(digitalPinToInterrupt(18), ReadEncoderA, CHANGE);
   attachInterrupt(digitalPinToInterrupt(19), ReadEncoderB, CHANGE);
   attachInterrupt(digitalPinToInterrupt(2), ReadEncoderC, CHANGE);
@@ -35,10 +34,10 @@ void setup() {
   pinMode(9, OUTPUT);
   pinMode(10, OUTPUT);
   pinMode(11, OUTPUT);
-  pinMode(2, INPUT_PULLUP);//右輪
-  pinMode(3, INPUT_PULLUP);//右輪
-  pinMode(18, INPUT_PULLUP);//左輪
-  pinMode(19, INPUT_PULLUP);//左輪
+  pinMode(2, INPUT_PULLUP);
+  pinMode(3, INPUT_PULLUP);
+  pinMode(18, INPUT_PULLUP);
+  pinMode(19, INPUT_PULLUP);
 
    for(int i = 0; i < 10; i++){
    line_val[i] = (line_white[i] + line_black[i])/2;
@@ -47,11 +46,10 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
   sw_A0=1; sw_A1=1; sw_A2=1; sw_A3=1; sw_A4=1; sw_A5=1; sw_A6=1; sw_A7=1; sw_A8=1; sw_A9=1;
   
-// Line_Following(150,50,10,1300);
-// T_Cross(10,70,10,70);
+
 
 
   Line_Following(150,10,50,1300);
@@ -177,15 +175,15 @@ void motor(int left,int right){
   else if (right<-150) right=-150;
 
   if (left>0){
-  analogWrite(4, left);//左前輪
+  analogWrite(4, left);
   analogWrite(5, 0);
-  analogWrite(10, left);//左後輪
+  analogWrite(10, left);
   analogWrite(11, 0);
   }
   else if(left<0){
-  analogWrite(4, 0);//左前輪
+  analogWrite(4, 0);
   analogWrite(5, left*-1);
-  analogWrite(10, 0);//左後輪
+  analogWrite(10, 0);
   analogWrite(11, left*-1);
   }
   else{
@@ -196,15 +194,15 @@ void motor(int left,int right){
   }
 
   if(right>0){
-  analogWrite(6, right);//右前輪
+  analogWrite(6, right);
   analogWrite(7, 0);
-  analogWrite(8, right);//右後輪
+  analogWrite(8, right);
   analogWrite(9, 0);
   }
   else if(right<0){
-  analogWrite(6, 0);//右前輪
+  analogWrite(6, 0);
   analogWrite(7, right*-1);
-  analogWrite(8, 0);//右後輪
+  analogWrite(8, 0);
   analogWrite(9, right*-1);
   }
   else{
